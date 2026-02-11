@@ -1,105 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>ROUTE SHIFT</title>
-<style>
-body {
-    background-color: black;
-    color: white;
-    font-family: 'Malgun Gothic', sans-serif;
-    text-align: center;
-    padding: 40px;
-}
-
-#game {
-    max-width: 600px;
-    margin: auto;
-}
-
-button {
-    margin: 10px;
-    padding: 10px 20px;
-    background: white;
-    color: black;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: hotpink;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>그날, 알고리즘이 나를 선택했다</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="game">
-    <h1>ROUTE SHIFT</h1>
-    <p id="text">그는 나를 바라보지 않았다.</p>
-    <div id="choices"></div>
-    <p id="stats">호감도: 0</p>
-</div>
+  <div class="overlay"></div>
 
-<script>
-let affection = 0;
+  <div class="title-box">
+    <h1>그날, 알고리즘이 나를 선택했다</h1>
+    <p class="subtitle">— 2023 감정 투자 기록 —</p>
+  </div>
 
-function showChoices(options) {
-    const choicesDiv = document.getElementById("choices");
-    choicesDiv.innerHTML = "";
-    options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.innerText = option.text;
-        btn.onclick = option.action;
-        choicesDiv.appendChild(btn);
-    });
-}
+  <div class="menu">
+    <img src="images/Playicon.png" class="menu-btn" onclick="startGame()">
+    <img src="images/Loadicon.png" class="menu-btn" onclick="loadGame()">
+    <img src="images/memoryicon.png" class="menu-btn" onclick="openGallery()">
+  </div>
 
-function startGame() {
-    showChoices([
-        {
-            text: "관심을 끈다",
-            action: () => {
-                affection += 10;
-                updateStats();
-                nextScene();
-            }
-        },
-        {
-            text: "거리를 둔다",
-            action: () => {
-                affection -= 5;
-                updateStats();
-                nextScene();
-            }
-        }
-    ]);
-}
-
-function nextScene() {
-    if (affection >= 20) {
-        document.getElementById("text").innerText = "고백 이벤트 발생.";
-        showChoices([
-            {
-                text: "고백한다",
-                action: () => {
-                    document.getElementById("text").innerText = "차였다… 호감도 하락.";
-                    affection -= 10;
-                    updateStats();
-                }
-            }
-        ]);
-    } else {
-        document.getElementById("text").innerText = "그는 여전히 무심하다.";
-        startGame();
+  <script>
+    function startGame() {
+      alert("프롤로그로 이동합니다...");
     }
-}
 
-function updateStats() {
-    document.getElementById("stats").innerText = "호감도: " + affection;
-}
+    function loadGame() {
+      alert("저장된 연애는 없습니다.");
+    }
 
-startGame();
-</script>
+    function openGallery() {
+      alert("아직 생성된 추억이 없습니다.");
+    }
+  </script>
 
 </body>
 </html>
+
