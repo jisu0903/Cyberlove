@@ -43,6 +43,33 @@
             추억 해금 조건: 최소 1의 미소년과 사랑 나누기");
     }
   </script>
+const introContainer = document.getElementById("introContainer");
+const slides = document.querySelectorAll("#introContainer .slide");
+let currentSlide = 0;
+
+/* NEW PLAY 클릭 */
+document.getElementById("newGameBtn").addEventListener("click", () => {
+    introContainer.style.display = "block";
+    showSlide(currentSlide);
+});
+
+/* 슬라이드 보여주는 함수 */
+function showSlide(index) {
+    slides.forEach(slide => slide.style.display = "none");
+    slides[index].style.display = "block";
+}
+
+/* 인트로 중 클릭하면 다음 */
+introContainer.addEventListener("click", () => {
+    currentSlide++;
+    if (currentSlide < slides.length) {
+        showSlide(currentSlide);
+    } else {
+        introContainer.style.display = "none";
+        currentSlide = 0;
+        // 여기서 메인 화면으로 넘어가게 연결 가능
+    }
+});
 
 </body>
 <audio id="bgm" autoplay loop>
