@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  height: 100vh;
+  background: url("images/Starnight.png") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 30, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.title-box {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  margin-bottom: 40px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+h1 {
+  font-size: 42px;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.menu {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 40px;
+}
+
+.menu-btn {
+  width: 180px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px hotpink);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
