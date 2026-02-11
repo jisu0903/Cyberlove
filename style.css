@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Nanum Myeongjo', serif;
   height: 100vh;
   background: url("images/Starnight.png") no-repeat center center/cover;
   display: flex;
@@ -28,9 +28,10 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  margin: 0;
-  text-shadow: 0 0 20px rgba(255,255,255,0.6);
+  font-size: 52px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-shadow: 0 0 25px rgba(255,255,255,0.5);
 }
 
 .subtitle {
