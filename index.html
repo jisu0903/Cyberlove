@@ -24,7 +24,9 @@
   </div>
 
   <div class="menu">
-    <img src="images/Playicon.png" class="menu-btn" onclick="startGame()">
+    <img src="images/Playicon.png" 
+     class="menu-btn" 
+     id="newGameBtn">
     <img src="images/Loadicon.png" class="menu-btn" onclick="loadGame()">
     <img src="images/memoryicon.png" class="menu-btn" onclick="openGallery()">
   </div>
@@ -43,6 +45,8 @@
             추억 해금 조건: 최소 1의 미소년과 사랑 나누기");
     }
   </script>
+
+  
 const introContainer = document.getElementById("introContainer");
 const slides = document.querySelectorAll("#introContainer .slide");
 let currentSlide = 0;
