@@ -90,3 +90,51 @@ h1 {
   transform: scale(1.05);
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
 }
+#introContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    z-index: 9999;
+    background: black;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dialogue-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 25px 40px;
+    box-sizing: border-box;
+}
+
+.name-tag {
+    position: absolute;
+    top: -35px;
+    left: 40px;
+    background: white;
+    color: black;
+    padding: 6px 18px;
+    font-weight: bold;
+}
+
+.dialogue-text {
+    font-size: 20px;
+}
