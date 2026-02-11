@@ -1,121 +1,118 @@
-<link rel="stylesheet" href="style.css">
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <title>♡두근두근 미소년 연애 시뮬레이터!♡</title>
-  <div class="character-section">
-  <img src="images/Mystery1.png" class="character">
-  <img src="images/mystery2.png" class="character">
-  <img src="images/mystery3.png" class="character">
+
+  <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
-</div>
-  
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- 배경 캐릭터 -->
+  <div class="character-section">
+    <img src="images/Mystery1.png" class="character">
+    <img src="images/mystery2.png" class="character">
+    <img src="images/mystery3.png" class="character">
+  </div>
 
   <div class="overlay"></div>
 
+  <!-- 타이틀 -->
   <div class="title-box">
     <h1>♡두근두근 미소년 연애 시뮬레이터!♡</h1>
     <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
   </div>
 
+  <!-- 메뉴 -->
   <div class="menu">
-    <img src="images/Playicon.png" 
-     class="menu-btn" 
-     id="newGameBtn">
-    <img src="images/Loadicon.png" class="menu-btn" onclick="loadGame()">
-    <img src="images/memoryicon.png" class="menu-btn" onclick="openGallery()">
+    <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
+    <img src="images/Loadicon.png" class="menu-btn" onclick="alert('저장된 연애는 없습니다.')">
+    <img src="images/memoryicon.png" class="menu-btn" onclick="alert('아직 생성된 추억이 없습니다.')">
   </div>
 
-  <script>
-    function startGame() {
-      alert("프롤로그로 이동합니다...");
-    }
-
-    function loadGame() {
-      alert("저장된 연애는 없습니다.");
-    }
-
-    function openGallery() {
-      alert("아직 생성된 추억이 없습니다. 
-            추억 해금 조건: 최소 1의 미소년과 사랑 나누기");
-    }
-  </script>
-
-  
-const introContainer = document.getElementById("introContainer");
-const slides = document.querySelectorAll("#introContainer .slide");
-let currentSlide = 0;
-
-/* NEW PLAY 클릭 */
-document.getElementById("newGameBtn").addEventListener("click", () => {
-    introContainer.style.display = "block";
-    showSlide(currentSlide);
-});
-
-/* 슬라이드 보여주는 함수 */
-function showSlide(index) {
-    slides.forEach(slide => slide.style.display = "none");
-    slides[index].style.display = "block";
-}
-
-/* 인트로 중 클릭하면 다음 */
-introContainer.addEventListener("click", () => {
-    currentSlide++;
-    if (currentSlide < slides.length) {
-        showSlide(currentSlide);
-    } else {
-        introContainer.style.display = "none";
-        currentSlide = 0;
-        // 여기서 메인 화면으로 넘어가게 연결 가능
-    }
-});
-
-</body>
-<audio id="bgm" autoplay loop>
-<source src="Music1.mp3" type="audio/mpeg">
-</audio>
-<!-- 인트로 전체 컨테이너 -->
-<div id="introContainer">
+  <!-- 🎬 인트로 컨테이너 -->
+  <div id="introContainer">
 
     <!-- Jiji -->
     <div class="slide">
-        <img src="Jiji.png">
-        <div class="dialogue-box">
-            <div class="name-tag">Jiji</div>
-            <div class="dialogue-text">
-                방탄 컴백 쇼케이스 [Arirang]에 함께하지 않을래?
-            </div>
+      <img src="images/Jiji.png">
+      <div class="dialogue-box">
+        <div class="name-tag">Jiji</div>
+        <div class="dialogue-text">
+          방탄 컴백 쇼케이스 [Arirang]에 함께하지 않을래?
         </div>
+      </div>
     </div>
 
     <!-- Bobo -->
     <div class="slide">
-        <img src="Bobo.png">
-        <div class="dialogue-box">
-            <div class="name-tag">Bobo</div>
-            <div class="dialogue-text">
-                지수야, 보검 오빠는 어때?
-            </div>
+      <img src="images/Bobo.png">
+      <div class="dialogue-box">
+        <div class="name-tag">Bobo</div>
+        <div class="dialogue-text">
+          지수야, 보검 오빠는 어때?
         </div>
+      </div>
     </div>
 
     <!-- Didi -->
     <div class="slide">
-        <img src="Didi.png">
-        <div class="dialogue-box">
-            <div class="name-tag">Didi</div>
-            <div class="dialogue-text">
-                오빠랑 영화데이트 갈까?
-            </div>
+      <img src="images/Didi.png">
+      <div class="dialogue-box">
+        <div class="name-tag">Didi</div>
+        <div class="dialogue-text">
+          오빠랑 영화데이트 갈까?
         </div>
+      </div>
     </div>
 
-</div>
+  </div>
 
+  <!-- 🎵 BGM -->
+  <audio id="bgm" loop>
+    <source src="Music1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 🔥 JS (절대 건들지 말 것 위치 중요) -->
+  <script>
+
+    const introContainer = document.getElementById("introContainer");
+    const slides = document.querySelectorAll("#introContainer .slide");
+    const bgm = document.getElementById("bgm");
+    let currentSlide = 0;
+
+    // 처음엔 인트로 숨김
+    introContainer.style.display = "none";
+
+    // NEW GAME 클릭
+    document.getElementById("newGameBtn").addEventListener("click", () => {
+        introContainer.style.display = "block";
+        bgm.play();
+        showSlide(currentSlide);
+    });
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.style.display = "none");
+        slides[index].style.display = "block";
+    }
+
+    // 인트로 클릭하면 다음
+    introContainer.addEventListener("click", () => {
+        currentSlide++;
+        if (currentSlide < slides.length) {
+            showSlide(currentSlide);
+        } else {
+            introContainer.style.display = "none";
+            currentSlide = 0;
+        }
+    });
+
+  </script>
+
+</body>
 </html>
-
