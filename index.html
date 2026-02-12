@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>♡두근두근 미소년 연애 시뮬레이터!♡</title>
+<title>두근두근 연애일기 시즌1</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -10,87 +10,94 @@
 
 <body>
 
+<!-- ⭐ 파티클 (가장 뒤) -->
 <canvas id="particles"></canvas>
 
+<!-- ⭐ 블러 -->
 <div class="overlay"></div>
 
-<!-- ⭐ 미스테리 캐릭터 -->
-<div class="character-section">
-  <img src="images/Mystery1.png" class="character">
-  <img src="images/mystery2.png" class="character">
-  <img src="images/mystery3.png" class="character">
+<!-- ⭐ 미스테리 3분할 -->
+<div class="mystery-wrapper">
+  <div class="mystery"><img src="images/Mystery1.png"></div>
+  <div class="mystery"><img src="images/Mystery2.png"></div>
+  <div class="mystery"><img src="images/Mystery3.png"></div>
 </div>
 
-<!-- 타이틀 -->
+<!-- ⭐ 타이틀 -->
 <div class="title-box">
-  <h1>♡두근두근 미소년 연애 시뮬레이터!♡</h1>
+  <h1>
+    ♡두근두근 연애일기♡<br>
+    <span class="season">시즌1</span>
+  </h1>
   <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
 </div>
 
-<!-- 메뉴 -->
+<!-- ⭐ 메뉴 -->
 <div class="menu">
   <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
   <img src="images/Loadicon.png" class="menu-btn">
   <img src="images/memoryicon.png" class="menu-btn">
 </div>
 
-<!-- 🎬 인트로 -->
+<!-- ⭐ 인트로 -->
 <div id="introContainer">
 
   <div class="slide">
-    <img src="images/Jiji.png">
+    <div class="character-area">
+      <img src="images/Jiji.png">
+    </div>
+
+    <div class="name-tag">석진</div>
+
     <div class="dialogue-box">
-      <div class="name-tag">석진</div>
-      <div class="dialogue-text">방탄 컴백 쇼케이스 함께할래요?</div>
+      방탄 컴백 쇼케이스 함께할래요?
     </div>
   </div>
 
   <div class="slide">
-    <img src="images/Bobo.png">
+    <div class="character-area">
+      <img src="images/Bobo.png">
+    </div>
+
+    <div class="name-tag">보검</div>
+
     <div class="dialogue-box">
-      <div class="name-tag">보검</div>
-      <div class="dialogue-text">지수야, 보검 오빠는 어때?</div>
+      지수야, 보검 오빠는 어때?
     </div>
   </div>
 
   <div class="slide">
-    <img src="images/Didi.png">
+    <div class="character-area">
+      <img src="images/Didi.png">
+    </div>
+
+    <div class="name-tag">디카프리오</div>
+
     <div class="dialogue-box">
-      <div class="name-tag">디카프리오</div>
-      <div class="dialogue-text">영화 데이트 갈까?</div>
+      영화 데이트 갈까?
     </div>
   </div>
 
 </div>
 
-<!-- 💥 중앙 Poong -->
 <div id="bigPoong">
   <img src="images/Poong.png">
   <div class="poong-text">이런 남자는 싫다구!!</div>
 </div>
 
-<!-- 🎵 BGM -->
-<audio id="bgm" loop>
-  <source src="Music1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 const introContainer = document.getElementById("introContainer");
 const slides = document.querySelectorAll(".slide");
 const bigPoong = document.getElementById("bigPoong");
-const bgm = document.getElementById("bgm");
 
 let currentSlide = 0;
 
 introContainer.style.display = "none";
-bigPoong.style.display = "none";
 
-/* 🎮 NEW GAME */
 document.getElementById("newGameBtn").onclick = () => {
   introContainer.style.display = "block";
   showSlide(0);
   currentSlide = 0;
-  bgm.play(); // 노래 재생
 };
 
 function showSlide(i){
@@ -114,7 +121,7 @@ introContainer.onclick = () => {
   }
 };
 
-/* ✨ 파티클 */
+/* ⭐ 파티클 */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -123,18 +130,18 @@ canvas.height = window.innerHeight;
 
 let particles = [];
 
-for (let i = 0; i < 80; i++) {
+for(let i=0;i<80;i++){
   particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2,
-    d: Math.random() * 1
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2,
+    d:Math.random()*1
   });
 }
 
-function drawParticles(){
+function draw(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(255,182,255,0.7)";
+  ctx.fillStyle="rgba(255,182,255,0.6)";
   ctx.beginPath();
 
   particles.forEach(p=>{
@@ -153,7 +160,7 @@ function drawParticles(){
   });
 }
 
-setInterval(drawParticles,33);
+setInterval(draw,33);
 </script>
 
 </body>
