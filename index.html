@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>♡두근두근 연애일기 시즌1♡</title>
+<title>♡두근두근 미소년 연애 시뮬레이터!♡</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -14,10 +14,17 @@
 
 <div class="overlay"></div>
 
+<!-- ⭐ 미스테리 캐릭터 -->
+<div class="character-section">
+  <img src="images/Mystery1.png" class="character">
+  <img src="images/mystery2.png" class="character">
+  <img src="images/mystery3.png" class="character">
+</div>
+
 <!-- 타이틀 -->
 <div class="title-box">
-  <h1>♡두근두근 연애일기 시즌1♡</h1>
-  <p class="subtitle">~ じすちゃん의 사랑 일대기 ~</p>
+  <h1>♡두근두근 미소년 연애 시뮬레이터!♡</h1>
+  <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
 </div>
 
 <!-- 메뉴 -->
@@ -27,7 +34,7 @@
   <img src="images/memoryicon.png" class="menu-btn">
 </div>
 
-<!-- 인트로 -->
+<!-- 🎬 인트로 -->
 <div id="introContainer">
 
   <div class="slide">
@@ -42,7 +49,7 @@
     <img src="images/Bobo.png">
     <div class="dialogue-box">
       <div class="name-tag">보검</div>
-      <div class="dialogue-text">지수야, 보검 오빠는 어때?ㅎㅎ</div>
+      <div class="dialogue-text">지수야, 보검 오빠는 어때?</div>
     </div>
   </div>
 
@@ -56,25 +63,34 @@
 
 </div>
 
-<!-- 중앙 Poong -->
+<!-- 💥 중앙 Poong -->
 <div id="bigPoong">
   <img src="images/Poong.png">
   <div class="poong-text">이런 남자는 싫다구!!</div>
 </div>
 
+<!-- 🎵 BGM -->
+<audio id="bgm" loop>
+  <source src="Music1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 const introContainer = document.getElementById("introContainer");
 const slides = document.querySelectorAll(".slide");
 const bigPoong = document.getElementById("bigPoong");
+const bgm = document.getElementById("bgm");
 
 let currentSlide = 0;
 
 introContainer.style.display = "none";
+bigPoong.style.display = "none";
 
+/* 🎮 NEW GAME */
 document.getElementById("newGameBtn").onclick = () => {
   introContainer.style.display = "block";
   showSlide(0);
   currentSlide = 0;
+  bgm.play(); // 노래 재생
 };
 
 function showSlide(i){
@@ -97,6 +113,47 @@ introContainer.onclick = () => {
     currentSlide = 0;
   }
 };
+
+/* ✨ 파티클 */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2,
+    d: Math.random() * 1
+  });
+}
+
+function drawParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(255,182,255,0.7)";
+  ctx.beginPath();
+
+  particles.forEach(p=>{
+    ctx.moveTo(p.x,p.y);
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+  });
+
+  ctx.fill();
+
+  particles.forEach(p=>{
+    p.y+=p.d;
+    if(p.y>canvas.height){
+      p.y=0;
+      p.x=Math.random()*canvas.width;
+    }
+  });
+}
+
+setInterval(drawParticles,33);
 </script>
 
 </body>
