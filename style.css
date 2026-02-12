@@ -1,190 +1,143 @@
-/* ===== 기본 ===== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Nanum Myeongjo', serif;
-  height: 100vh;
-  background: url("images/Starnight.png") no-repeat center center/cover;
-  overflow: hidden;
+body{
+  margin:0;
+  font-family:'Nanum Myeongjo', serif;
+  background:url("images/Starnight.png") center/cover no-repeat;
+  height:100vh;
+  overflow:hidden;
+  position:relative;
 }
 
-/* 어두운 오버레이 */
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 40, 0.45);
-  z-index: 1;
+/* 파티클 */
+#particles{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
 }
 
-/* ===== 타이틀 ===== */
-.title-box {
-  position: relative;
-  text-align: center;
-  color: white;
-  z-index: 2;
-  margin-top: 120px;
-  animation: fadeIn 2s ease-in-out;
+/* 블러 오버레이 */
+.overlay{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(10,0,40,0.45);
+  z-index:1;
 }
 
-h1 {
-  font-size: 52px;
-  letter-spacing: 3px;
-  font-weight: 700;
-  text-shadow: 0 0 25px rgba(255,255,255,0.6);
+/* 타이틀 */
+.title-box{
+  position:absolute;
+  top:20%;
+  width:100%;
+  text-align:center;
+  color:white;
+  z-index:2;
 }
 
-.subtitle {
-  margin-top: 10px;
-  font-size: 16px;
-  opacity: 0.8;
+h1{
+  font-size:48px;
 }
 
-/* ===== 메뉴 ===== */
-.menu {
-  position: absolute;
-  right: 80px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  z-index: 2;
+.subtitle{
+  opacity:0.8;
 }
 
-.menu-btn {
-  width: 180px;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
+/* 메뉴 */
+.menu{
+  position:absolute;
+  right:80px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  z-index:2;
 }
 
-.menu-btn:hover {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 20px hotpink);
+.menu-btn{
+  width:180px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-/* ===== 캐릭터 배경 ===== */
-.character-section {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-end;
-  z-index: 1;
+.menu-btn:hover{
+  transform:scale(1.1);
 }
 
-.character {
-  height: 60vh;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+/* 인트로 */
+#introContainer{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display:none;
+  z-index:5;
 }
 
-.character:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
+/* 슬라이드 */
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:none;
+  background:url("images/Starnight.png") center/cover no-repeat;
+  text-align:center;
 }
 
-/* ===== 인트로 영역 ===== */
-#introContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: none;
-  z-index: 9999;
+.slide img{
+  max-height:70vh;
+  margin-top:8vh;
 }
 
-/* ===== 슬라이드 ===== */
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  display: none;
-  background: url("images/Starnight.png") center center / cover no-repeat;
-  text-align: center;
+/* 대사창 */
+.dialogue-box{
+  position:absolute;
+  bottom:100px;
+  left:50%;
+  transform:translateX(-50%);
+  width:60%;
+  padding:25px;
+  background:rgba(120,0,200,0.8);
+  border-radius:25px;
+  color:white;
+  text-align:center;
 }
 
-.slide img {
-  max-height: 75vh;
-  max-width: 85%;
-  margin-top: 5vh;
+.name-tag{
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
-/* ===== 대사창 ===== */
-.dialogue-box {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 65%;
-  padding: 25px 40px;
-  background: linear-gradient(135deg, rgba(138,43,226,0.85), rgba(255,105,180,0.85));
-  border-radius: 25px;
-  box-shadow: 0 0 30px rgba(255,105,180,0.6);
-  text-align: center;
-  color: white;
+.dialogue-text{
+  font-size:20px;
 }
 
-/* 이름표 */
-.name-tag {
-  display: inline-block;
-  padding: 8px 22px;
-  margin-bottom: 15px;
-  font-size: 22px;
-  font-weight: bold;
-  background: rgba(0,0,0,0.4);
-  border-radius: 20px;
+/* 중앙 Poong */
+#bigPoong{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:none;
+  z-index:10;
+  text-align:center;
 }
 
-/* 대사 텍스트 */
-.dialogue-text {
-  font-size: 20px;
-  line-height: 1.6;
+#bigPoong img{
+  width:600px;
+  max-width:80vw;
 }
 
-/* ===== Poong 중앙 말풍선 ===== */
-#bigPoong {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: transform 0.4s ease;
-  z-index: 10000;
-  text-align: center;
-}
-
-#bigPoong img {
-  width: 650px;
-  max-width: 80vw;
-}
-
-.poong-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  font-size: 36px;
-  font-weight: bold;
-  color: #4b0082;
-  text-align: center;
-}
-
-/* ===== 파티클 ===== */
-#particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* ===== 애니메이션 ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.poong-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:32px;
+  font-weight:bold;
+  color:#4b0082;
 }
