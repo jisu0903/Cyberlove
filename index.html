@@ -10,11 +10,32 @@
 
 <body>
 
-<!-- ⭐ 파티클 (가장 뒤) -->
+<!-- ⭐ BGM -->
+<audio id="bgm" loop>
+  <source src="Music1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ⭐ 배경 파티클 -->
 <canvas id="particles"></canvas>
 
-<!-- ⭐ 블러 -->
 <div class="overlay"></div>
+
+<!-- ⭐ 메인 타이틀 영역 -->
+<div class="main-screen">
+
+  <div class="title-area">
+    <h1>♡두근두근 연애일기♡</h1>
+    <h2>시즌1</h2>
+    <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
+  </div>
+
+  <div class="menu">
+    <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
+    <img src="images/Loadicon.png" class="menu-btn">
+    <img src="images/memoryicon.png" class="menu-btn">
+  </div>
+
+</div>
 
 <!-- ⭐ 미스테리 3분할 -->
 <div class="mystery-wrapper">
@@ -23,145 +44,35 @@
   <div class="mystery"><img src="images/Mystery3.png"></div>
 </div>
 
-<!-- ⭐ 타이틀 -->
-<div class="title-box">
-  <h1>
-    ♡두근두근 연애일기♡<br>
-    <span class="season">시즌1</span>
-  </h1>
-  <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
-</div>
-
-<!-- ⭐ 메뉴 -->
-<div class="menu">
-  <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
-  <img src="images/Loadicon.png" class="menu-btn">
-  <img src="images/memoryicon.png" class="menu-btn">
-</div>
-
 <!-- ⭐ 인트로 -->
 <div id="introContainer">
 
   <div class="slide">
-    <div class="character-area">
-      <img src="images/Jiji.png">
-    </div>
-
-    <div class="name-tag">석진</div>
-
-    <div class="dialogue-box">
-      방탄 컴백 쇼케이스 함께할래요?
+    <img src="images/Jiji.png" class="character">
+    <div class="dialogue-ui">
+      <div class="name-tag">석진</div>
+      <div class="dialogue-text">방탄 컴백 쇼케이스 함께할래요?</div>
     </div>
   </div>
 
   <div class="slide">
-    <div class="character-area">
-      <img src="images/Bobo.png">
-    </div>
-
-    <div class="name-tag">보검</div>
-
-    <div class="dialogue-box">
-      지수야, 보검 오빠는 어때?
+    <img src="images/Bobo.png" class="character">
+    <div class="dialogue-ui">
+      <div class="name-tag">보검</div>
+      <div class="dialogue-text">지수야, 보검 오빠는 어때?</div>
     </div>
   </div>
 
   <div class="slide">
-    <div class="character-area">
-      <img src="images/Didi.png">
-    </div>
-
-    <div class="name-tag">디카프리오</div>
-
-    <div class="dialogue-box">
-      영화 데이트 갈까?
+    <img src="images/Didi.png" class="character">
+    <div class="dialogue-ui">
+      <div class="name-tag">디카프리오</div>
+      <div class="dialogue-text">영화 데이트 갈까?</div>
     </div>
   </div>
 
 </div>
 
-<div id="bigPoong">
-  <img src="images/Poong.png">
-  <div class="poong-text">이런 남자는 싫다구!!</div>
-</div>
-
-<script>
-const introContainer = document.getElementById("introContainer");
-const slides = document.querySelectorAll(".slide");
-const bigPoong = document.getElementById("bigPoong");
-
-let currentSlide = 0;
-
-introContainer.style.display = "none";
-
-document.getElementById("newGameBtn").onclick = () => {
-  introContainer.style.display = "block";
-  showSlide(0);
-  currentSlide = 0;
-};
-
-function showSlide(i){
-  slides.forEach(s => s.style.display = "none");
-  slides[i].style.display = "block";
-}
-
-introContainer.onclick = () => {
-  currentSlide++;
-
-  if(currentSlide < slides.length){
-    showSlide(currentSlide);
-  }
-  else if(currentSlide === slides.length){
-    bigPoong.style.display = "block";
-  }
-  else{
-    bigPoong.style.display = "none";
-    introContainer.style.display = "none";
-    currentSlide = 0;
-  }
-};
-
-/* ⭐ 파티클 */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<80;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    r:Math.random()*2,
-    d:Math.random()*1
-  });
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(255,182,255,0.6)";
-  ctx.beginPath();
-
-  particles.forEach(p=>{
-    ctx.moveTo(p.x,p.y);
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
-  });
-
-  ctx.fill();
-
-  particles.forEach(p=>{
-    p.y+=p.d;
-    if(p.y>canvas.height){
-      p.y=0;
-      p.x=Math.random()*canvas.width;
-    }
-  });
-}
-
-setInterval(draw,33);
-</script>
-
+<script src="game.js"></script>
 </body>
 </html>
