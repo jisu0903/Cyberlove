@@ -106,9 +106,11 @@ h1 {
     width: 100%;
     height: 100vh;
     display: none;
-    background: black;
+
+    background: url("images/Starnight.png") center center / cover no-repeat;
     text-align: center;
 }
+
 
 .slide img {
     max-height: 80vh;   /* 화면의 80%까지만 */
@@ -118,31 +120,46 @@ h1 {
 
 .dialogue-box {
     position: absolute;
-    bottom: 30px;   /* 바닥에서 살짝 띄움 */
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
-    height: 220px;  /* 더 크게 */
-    background: rgba(0,0,0,0.9);
+    height: 220px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(75, 0, 130, 0.95),
+        rgba(199, 21, 133, 0.9)
+    );
+
     color: white;
     padding: 35px 50px;
     box-sizing: border-box;
-    border-radius: 15px;
-    font-family: 'Nanum Myeongjo', serif;
-}
+    border-radius: 20px;
 
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+}
 
 .name-tag {
     position: absolute;
     top: -45px;
     left: 30px;
-    background: white;
-    color: black;
-    padding: 8px 20px;
+
+    background: linear-gradient(
+        90deg,
+        #ff6ec7,
+        #8a2be2
+    );
+
+    color: white;
+    padding: 8px 22px;
     font-weight: bold;
     font-size: 18px;
-    border-radius: 8px;
+    border-radius: 10px;
+
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
 }
+
 
 .dialogue-text {
     font-size: 24px;
