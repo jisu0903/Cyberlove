@@ -1,29 +1,29 @@
+/* ===== 기본 ===== */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Nanum Myeongjo', serif;
   height: 100vh;
   background: url("images/Starnight.png") no-repeat center center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
+/* 어두운 오버레이 */
 .overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 30, 0.4);
+  background: rgba(0, 0, 40, 0.45);
+  z-index: 1;
 }
 
+/* ===== 타이틀 ===== */
 .title-box {
   position: relative;
   text-align: center;
   color: white;
   z-index: 2;
-  margin-bottom: 40px;
+  margin-top: 120px;
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -31,7 +31,7 @@ h1 {
   font-size: 52px;
   letter-spacing: 3px;
   font-weight: 700;
-  text-shadow: 0 0 25px rgba(255,255,255,0.5);
+  text-shadow: 0 0 25px rgba(255,255,255,0.6);
 }
 
 .subtitle {
@@ -40,6 +40,7 @@ h1 {
   opacity: 0.8;
 }
 
+/* ===== 메뉴 ===== */
 .menu {
   position: absolute;
   right: 80px;
@@ -50,7 +51,6 @@ h1 {
   gap: 25px;
   z-index: 2;
 }
-
 
 .menu-btn {
   width: 180px;
@@ -63,26 +63,20 @@ h1 {
   filter: drop-shadow(0 0 20px hotpink);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ===== 캐릭터 배경 ===== */
 .character-section {
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
-  pointer-events: none;
   z-index: 1;
 }
 
 .character {
   height: 60vh;
   object-fit: contain;
-  pointer-events: auto;
   transition: transform 0.3s ease;
 }
 
@@ -90,119 +84,107 @@ h1 {
   transform: scale(1.05);
   filter: drop-shadow(0 0 25px rgba(255,255,255,0.6));
 }
+
+/* ===== 인트로 영역 ===== */
 #introContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: none;
-    z-index: 9999;
-    background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  z-index: 9999;
 }
 
+/* ===== 슬라이드 ===== */
 .slide {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: none;
-
-    background: url("images/Starnight.png") center center / cover no-repeat;
-    text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  background: url("images/Starnight.png") center center / cover no-repeat;
+  text-align: center;
 }
-
 
 .slide img {
-    max-height: 80vh;   /* 화면의 80%까지만 */
-    max-width: 80%;
-    margin-top: 5vh;
+  max-height: 75vh;
+  max-width: 85%;
+  margin-top: 5vh;
 }
 
-/* 슬라이드 기본 */
-.slide {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    display: none;
-    background: url("images/Starnight.png") center center / cover no-repeat;
-    text-align: center;
+/* ===== 대사창 ===== */
+.dialogue-box {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  padding: 25px 40px;
+  background: linear-gradient(135deg, rgba(138,43,226,0.85), rgba(255,105,180,0.85));
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(255,105,180,0.6);
+  text-align: center;
+  color: white;
 }
 
-/* 캐릭터 이미지 */
-.slide img {
-    max-height: 75vh;
-    margin-top: 5vh;
-}
-
-/* 💬 대사 영역 (자동 높이) */
-.dialogue-wrapper {
-    position: absolute;
-    bottom: 80px;   /* 바닥에서 띄움 */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    text-align: center;
-}
-
-/* 🌟 이름표 */
+/* 이름표 */
 .name-tag {
-    display: inline-block;
-    padding: 10px 28px;
-    margin-bottom: 15px;
-
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-
-    background: linear-gradient(90deg, #ff6ec7, #8a2be2);
-    border-radius: 30px;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+  display: inline-block;
+  padding: 8px 22px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20px;
 }
 
+/* 대사 텍스트 */
+.dialogue-text {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+/* ===== Poong 중앙 말풍선 ===== */
 #bigPoong {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    z-index: 10000;
-    transition: 0.4s ease;
-    text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease;
+  z-index: 10000;
+  text-align: center;
 }
 
 #bigPoong img {
-    width: 600px;
-    max-width: 80vw;
+  width: 650px;
+  max-width: 80vw;
 }
 
 .poong-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 70%;
-    font-size: 36px;
-    font-weight: bold;
-    color: #4b0082;
-    text-align: center;
-}
-#bigPoong {
-    animation: pop 0.4s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  font-size: 36px;
+  font-weight: bold;
+  color: #4b0082;
+  text-align: center;
 }
 
-@keyframes pop {
-    0% { transform: translate(-50%, -50%) scale(0.3); }
-    70% { transform: translate(-50%, -50%) scale(1.1); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-
+/* ===== 파티클 ===== */
 #particles {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== 애니메이션 ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
