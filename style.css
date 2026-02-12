@@ -1,118 +1,144 @@
+/* ===== 기본 ===== */
 body{
   margin:0;
   font-family:'Nanum Myeongjo', serif;
   background:url("images/Starnight.png") center/cover no-repeat;
   height:100vh;
-  overflow:hidden;
+  overflow:hidden; /* 스크롤 방지 */
   position:relative;
 }
 
-/* 파티클 */
-#particles{
+/* ===== 레이어 순서 ===== */
+#particles{ z-index:0; position:fixed; width:100%; height:100%; }
+.overlay{ z-index:1; position:fixed; width:100%; height:100%; background:rgba(10,0,40,0.5); }
+.mystery-wrapper{ z-index:2; }
+.title-box{ z-index:3; }
+.menu{ z-index:4; }
+#introContainer{ z-index:10; }
+
+/* ===== 미스테리 3분할 ===== */
+.mystery-wrapper{
   position:fixed;
-  top:0;
-  left:0;
+  bottom:0;
   width:100%;
-  height:100%;
-  z-index:0;
-  pointer-events:none;
+  display:flex;
 }
 
-/* 블러 오버레이 */
-.overlay{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(10,0,40,0.45);
-  z-index:1;
+.mystery{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
 }
 
-/* 타이틀 */
+.mystery img{
+  height:55vh;
+  object-fit:contain;
+}
+
+/* ===== 타이틀 ===== */
 .title-box{
   position:absolute;
-  top:20%;
+  top:18%;
   width:100%;
   text-align:center;
   color:white;
-  z-index:2;
 }
 
 h1{
-  font-size:48px;
+  font-size:56px;
+  line-height:1.3;
+  text-shadow:0 0 25px rgba(255,255,255,0.7);
+}
+
+.season{
+  font-size:34px;
+  display:block;
+  margin-top:10px;
 }
 
 .subtitle{
-  opacity:0.8;
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.85;
 }
 
-/* 메뉴 */
+/* ===== 메뉴 ===== */
 .menu{
   position:absolute;
-  right:80px;
+  right:40px;
   top:50%;
   transform:translateY(-50%);
   display:flex;
   flex-direction:column;
-  gap:25px;
-  z-index:2;
+  gap:20px;
 }
 
 .menu-btn{
-  width:180px;
+  width:140px;
   cursor:pointer;
   transition:0.3s;
 }
 
 .menu-btn:hover{
-  transform:scale(1.1);
+  transform:scale(1.08);
 }
 
-/* 인트로 */
+/* ===== 인트로 ===== */
 #introContainer{
   position:fixed;
   width:100%;
   height:100%;
-  top:0;
-  left:0;
   display:none;
-  z-index:5;
 }
 
-/* 슬라이드 */
 .slide{
   position:absolute;
   width:100%;
   height:100%;
-  display:none;
   background:url("images/Starnight.png") center/cover no-repeat;
   text-align:center;
 }
 
-.slide img{
-  max-height:70vh;
-  margin-top:8vh;
+.character-area{
+  position:absolute;
+  bottom:180px; /* 대사창 위로 고정 */
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.character-area img{
+  max-height:60vh;
+  object-fit:contain;
+}
+
+/* 이름표 분리 */
+.name-tag{
+  position:absolute;
+  bottom:140px;
+  left:50%;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,#ff6ec7,#8a2be2);
+  padding:10px 30px;
+  border-radius:25px;
+  color:white;
+  font-weight:bold;
+  font-size:22px;
 }
 
 /* 대사창 */
 .dialogue-box{
   position:absolute;
-  bottom:100px;
+  bottom:60px;
   left:50%;
   transform:translateX(-50%);
   width:60%;
   padding:25px;
-  background:rgba(120,0,200,0.8);
+  background:rgba(80,0,150,0.85);
   border-radius:25px;
   color:white;
   text-align:center;
-}
-
-.name-tag{
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.dialogue-text{
   font-size:20px;
 }
 
@@ -123,13 +149,11 @@ h1{
   left:50%;
   transform:translate(-50%,-50%);
   display:none;
-  z-index:10;
-  text-align:center;
+  z-index:20;
 }
 
 #bigPoong img{
   width:600px;
-  max-width:80vw;
 }
 
 .poong-text{
@@ -137,21 +161,7 @@ h1{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:32px;
+  font-size:34px;
   font-weight:bold;
   color:#4b0082;
-}
-.character-section{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  display:flex;
-  justify-content:space-evenly;
-  align-items:flex-end;
-  z-index:2;
-}
-
-.character{
-  height:60vh;
-  object-fit:contain;
 }
