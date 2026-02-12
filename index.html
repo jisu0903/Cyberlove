@@ -1,143 +1,160 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>♡두근두근 미소년 연애 시뮬레이터!♡</title>
+<meta charset="UTF-8">
+<title>♡두근두근 미소년 연애 시뮬레이터!♡</title>
 
-  <!-- 폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+<style>
+/* 💥 중앙 Poong 말풍선 */
+#bigPoong {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.4s ease;
+    z-index: 9999;
+    text-align: center;
+}
+
+#bigPoong img {
+    width: 650px;
+    max-width: 80vw;
+}
+
+.poong-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #4b0082;
+    text-align: center;
+}
+</style>
+
 </head>
-
 <body>
+
 <canvas id="particles"></canvas>
 
-  <!-- 배경 캐릭터 -->
-  <div class="character-section">
-    <img src="images/Mystery1.png" class="character">
-    <img src="images/mystery2.png" class="character">
-    <img src="images/mystery3.png" class="character">
-  </div>
+<!-- 배경 캐릭터 -->
+<div class="character-section">
+  <img src="images/Mystery1.png" class="character">
+  <img src="images/mystery2.png" class="character">
+  <img src="images/mystery3.png" class="character">
+</div>
 
-  <div class="overlay"></div>
+<div class="overlay"></div>
 
-  <!-- 타이틀 -->
-  <div class="title-box">
-    <h1>♡두근두근 미소년 연애 시뮬레이터!♡</h1>
-    <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
-  </div>
+<!-- 타이틀 -->
+<div class="title-box">
+  <h1>♡두근두근 미소년 연애 시뮬레이터!♡</h1>
+  <p class="subtitle">— じすちゃん의 연애 일대기 —</p>
+</div>
 
-  <!-- 메뉴 -->
-  <div class="menu">
-    <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
-    <img src="images/Loadicon.png" class="menu-btn" onclick="alert('저장된 연애는 없습니다.')">
-    <img src="images/memoryicon.png" class="menu-btn" onclick="alert('아직 생성된 추억이 없습니다.')">
-  </div>
+<!-- 메뉴 -->
+<div class="menu">
+  <img src="images/Playicon.png" class="menu-btn" id="newGameBtn">
+  <img src="images/Loadicon.png" class="menu-btn" onclick="alert('저장된 연애는 없습니다.')">
+  <img src="images/memoryicon.png" class="menu-btn" onclick="alert('아직 생성된 추억이 없습니다.')">
+</div>
 
-  <!-- 🎬 인트로 컨테이너 -->
-  <div id="introContainer">
+<!-- 🎬 인트로 -->
+<div id="introContainer">
 
-    <!-- Jiji -->
-    <div class="slide">
-      <img src="images/Jiji.png">
-      <div class="dialogue-box">
-        <div class="name-tag">석진</div>
-        <div class="dialogue-text">
-          방탄 컴백 쇼케이스 [Arirang]에 함께하지 않을래요?
-        </div>
+  <!-- Jiji -->
+  <div class="slide">
+    <img src="images/Jiji.png">
+    <div class="dialogue-box">
+      <div class="name-tag">석진</div>
+      <div class="dialogue-text">
+        방탄 컴백 쇼케이스 [Arirang]에 함께하지 않을래요?
       </div>
     </div>
-<div id="bigBubble">
-  이런 남자는 싫다구!!
-  #bigPoong {
-    animation: pop 0.4s ease;
-}
+  </div>
 
-@keyframes pop {
-    0% { transform: translate(-50%, -50%) scale(0.3); }
-    70% { transform: translate(-50%, -50%) scale(1.1); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-}
+  <!-- Bobo -->
+  <div class="slide">
+    <img src="images/Bobo.png">
+    <div class="dialogue-box">
+      <div class="name-tag">보검</div>
+      <div class="dialogue-text">
+        지수야, 보검 오빠는 어때?ㅎㅎ
+      </div>
+    </div>
+  </div>
+
+  <!-- Didi -->
+  <div class="slide">
+    <img src="images/Didi.png">
+    <div class="dialogue-box">
+      <div class="name-tag">디카프리오</div>
+      <div class="dialogue-text">
+        오빠랑 영화데이트 갈까?
+      </div>
+    </div>
+  </div>
 
 </div>
 
-    <!-- Bobo -->
-    <div class="slide">
-      <img src="images/Bobo.png">
-      <div class="dialogue-box">
-        <div class="name-tag">보검</div>
-        <div class="dialogue-text">
-          지수야, 보검 오빠는 어때?ㅎㅎ
-        </div>
-      </div>
-    </div>
+<!-- 💥 중앙 Poong -->
+<div id="bigPoong">
+  <img src="images/Poong.png">
+  <div class="poong-text">이런 남자는 싫다구!!</div>
+</div>
 
-    <!-- Didi -->
-    <div class="slide">
-      <img src="images/Didi.png">
-      <div class="dialogue-box">
-        <div class="name-tag">디카프리오</div>
-        <div class="dialogue-text">
-          오빠랑 영화데이트 갈까?
-        </div>
-      </div>
-    </div>
+<!-- 🎵 BGM -->
+<audio id="bgm" loop>
+  <source src="Music1.mp3" type="audio/mpeg">
+</audio>
 
-  </div>
+<script>
+const introContainer = document.getElementById("introContainer");
+const slides = document.querySelectorAll("#introContainer .slide");
+const bgm = document.getElementById("bgm");
+const bigPoong = document.getElementById("bigPoong");
 
-  <!-- 🎵 BGM -->
-  <audio id="bgm" loop>
-    <source src="Music1.mp3" type="audio/mpeg">
-  </audio>
+let currentSlide = 0;
 
-  <!-- 🔥 JS (절대 건들지 말 것 위치 중요) -->
-  <script>
+introContainer.style.display = "none";
+bigPoong.style.pointerEvents = "none";
 
-    const introContainer = document.getElementById("introContainer");
-    const slides = document.querySelectorAll("#introContainer .slide");
-    const bgm = document.getElementById("bgm");
-    let currentSlide = 0;
+document.getElementById("newGameBtn").addEventListener("click", () => {
+    introContainer.style.display = "block";
+    bgm.play();
+    showSlide(currentSlide);
+});
 
-    // 처음엔 인트로 숨김
-    introContainer.style.display = "none";
+function showSlide(index) {
+    slides.forEach(slide => slide.style.display = "none");
+    slides[index].style.display = "block";
+}
 
-    // NEW GAME 클릭
-    document.getElementById("newGameBtn").addEventListener("click", () => {
-        introContainer.style.display = "block";
-        bgm.play();
-        showSlide(currentSlide);
-    });
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.style.display = "none");
-        slides[index].style.display = "block";
-    }
-
-    // 인트로 클릭하면 다음
-    introContainer.addEventListener("click", () => {
+introContainer.addEventListener("click", () => {
     currentSlide++;
 
     if (currentSlide < slides.length) {
         showSlide(currentSlide);
 
     } else if (currentSlide === slides.length) {
-        // 💥 Poong 등장
-        document.getElementById("bigPoong").style.transform =
+        bigPoong.style.transform =
             "translate(-50%, -50%) scale(1)";
+    }
 
-    } else {
-        // 다시 닫기
-        document.getElementById("bigPoong").style.transform =
+    else {
+        bigPoong.style.transform =
             "translate(-50%, -50%) scale(0)";
         introContainer.style.display = "none";
         currentSlide = 0;
     }
 });
 
-
-// 파티클 효과
+/* ✨ 파티클 */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -156,36 +173,4 @@ for (let i = 0; i < 80; i++) {
 }
 
 function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "rgba(255, 182, 255, 0.7)";
-    ctx.beginPath();
-
-    for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        ctx.moveTo(p.x, p.y);
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
-    }
-
-    ctx.fill();
-    updateParticles();
-}
-
-function updateParticles() {
-    for (let i = 0; i < particles.length; i++) {
-        let p = particles[i];
-        p.y += p.d;
-
-        if (p.y > canvas.height) {
-            p.y = 0;
-            p.x = Math.random() * canvas.width;
-        }
-    }
-}
-
-setInterval(drawParticles, 33);
-
-  </script>
-
-</body>
-</html>
+    ctx.clearRect(0
