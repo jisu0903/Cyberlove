@@ -141,3 +141,17 @@ h1{
   font-weight:bold;
   color:#4b0082;
 }
+.character-section{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:space-evenly;
+  align-items:flex-end;
+  z-index:2;
+}
+
+.character{
+  height:60vh;
+  object-fit:contain;
+}
