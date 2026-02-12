@@ -175,3 +175,21 @@ h1 {
     z-index: 1;
     pointer-events: none;
 }
+#bigBubble {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+
+    background: linear-gradient(135deg, #ff1493, #9400d3);
+    color: white;
+    padding: 50px 80px;
+    font-size: 40px;
+    font-weight: bold;
+
+    border-radius: 40px;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+
+    z-index: 10000;
+    transition: 0.4s ease;
+}
