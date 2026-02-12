@@ -1,22 +1,67 @@
-/* ===== 기본 ===== */
 body{
   margin:0;
   font-family:'Nanum Myeongjo', serif;
   background:url("images/Starnight.png") center/cover no-repeat;
   height:100vh;
-  overflow:hidden; /* 스크롤 방지 */
+  overflow:hidden;
   position:relative;
 }
 
-/* ===== 레이어 순서 ===== */
-#particles{ z-index:0; position:fixed; width:100%; height:100%; }
-.overlay{ z-index:1; position:fixed; width:100%; height:100%; background:rgba(10,0,40,0.5); }
+/* ===== 레이어 ===== */
+#particles{ position:fixed; width:100%; height:100%; z-index:0; }
+.overlay{ position:fixed; width:100%; height:100%; background:rgba(20,0,50,0.5); z-index:1; }
+.main-screen{ position:relative; z-index:3; height:100vh; }
 .mystery-wrapper{ z-index:2; }
-.title-box{ z-index:3; }
-.menu{ z-index:4; }
-#introContainer{ z-index:10; }
 
-/* ===== 미스테리 3분할 ===== */
+/* ===== 타이틀 ===== */
+.title-area{
+  position:absolute;
+  left:8%;
+  top:22%;
+  color:white;
+}
+
+.title-area h1{
+  font-size:60px;
+  margin:0;
+  text-shadow:0 0 25px rgba(255,255,255,0.8);
+}
+
+.title-area h2{
+  font-size:40px;
+  margin-top:10px;
+  color:#ffc6ff;
+}
+
+.subtitle{
+  margin-top:15px;
+  font-size:20px;
+  opacity:0.9;
+}
+
+/* ===== 메뉴 ===== */
+.menu{
+  position:absolute;
+  right:5%;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.menu-btn{
+  width:130px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.menu-btn:hover{
+  transform:scale(1.1);
+  filter:drop-shadow(0 0 15px hotpink);
+}
+
+/* ===== 미스테리 ===== */
 .mystery-wrapper{
   position:fixed;
   bottom:0;
@@ -32,56 +77,9 @@ body{
 }
 
 .mystery img{
-  height:55vh;
+  height:48vh;
   object-fit:contain;
-}
-
-/* ===== 타이틀 ===== */
-.title-box{
-  position:absolute;
-  top:18%;
-  width:100%;
-  text-align:center;
-  color:white;
-}
-
-h1{
-  font-size:56px;
-  line-height:1.3;
-  text-shadow:0 0 25px rgba(255,255,255,0.7);
-}
-
-.season{
-  font-size:34px;
-  display:block;
-  margin-top:10px;
-}
-
-.subtitle{
-  margin-top:15px;
-  font-size:18px;
-  opacity:0.85;
-}
-
-/* ===== 메뉴 ===== */
-.menu{
-  position:absolute;
-  right:40px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.menu-btn{
-  width:140px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.menu-btn:hover{
-  transform:scale(1.08);
+  filter:brightness(0.7);
 }
 
 /* ===== 인트로 ===== */
@@ -90,78 +88,53 @@ h1{
   width:100%;
   height:100%;
   display:none;
+  z-index:10;
+  background:url("images/Starnight.png") center/cover no-repeat;
 }
 
 .slide{
   position:absolute;
   width:100%;
   height:100%;
-  background:url("images/Starnight.png") center/cover no-repeat;
+  display:none;
   text-align:center;
 }
 
-.character-area{
+.character{
   position:absolute;
-  bottom:180px; /* 대사창 위로 고정 */
-  width:100%;
-  display:flex;
-  justify-content:center;
-}
-
-.character-area img{
-  max-height:60vh;
-  object-fit:contain;
-}
-
-/* 이름표 분리 */
-.name-tag{
-  position:absolute;
-  bottom:140px;
+  bottom:170px;
   left:50%;
   transform:translateX(-50%);
+  max-height:60vh;
+}
+
+/* ===== 대사 UI ===== */
+.dialogue-ui{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  width:70%;
+}
+
+.name-tag{
+  position:absolute;
+  top:-35px;
+  left:40px;
   background:linear-gradient(90deg,#ff6ec7,#8a2be2);
-  padding:10px 30px;
-  border-radius:25px;
+  padding:8px 25px;
+  border-radius:20px;
   color:white;
   font-weight:bold;
   font-size:22px;
+  box-shadow:0 0 15px rgba(255,105,180,0.6);
 }
 
-/* 대사창 */
-.dialogue-box{
-  position:absolute;
-  bottom:60px;
-  left:50%;
-  transform:translateX(-50%);
-  width:60%;
-  padding:25px;
-  background:rgba(80,0,150,0.85);
+.dialogue-text{
+  background:rgba(90,0,160,0.9);
+  padding:30px;
   border-radius:25px;
   color:white;
+  font-size:22px;
   text-align:center;
-  font-size:20px;
-}
-
-/* 중앙 Poong */
-#bigPoong{
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  display:none;
-  z-index:20;
-}
-
-#bigPoong img{
-  width:600px;
-}
-
-.poong-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:34px;
-  font-weight:bold;
-  color:#4b0082;
 }
