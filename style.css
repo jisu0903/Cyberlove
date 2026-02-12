@@ -159,30 +159,41 @@ h1 {
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
 }
 
-/* 💥 말풍선 (Poong.png 사용) */
-.speech-bubble {
-    position: relative;
-    display: inline-block;
+#bigPoong {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10000;
+    transition: 0.4s ease;
+    text-align: center;
 }
 
-.speech-bubble img {
-    width: 100%;
-    max-width: 700px;
+#bigPoong img {
+    width: 600px;
+    max-width: 80vw;
 }
 
-/* 말풍선 위 텍스트 */
-.bubble-text {
+.poong-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    width: 80%;
-    color: #4b0082;
-    font-size: 24px;
+    width: 70%;
+    font-size: 36px;
     font-weight: bold;
-    line-height: 1.6;
+    color: #4b0082;
     text-align: center;
+}
+#bigPoong {
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    0% { transform: translate(-50%, -50%) scale(0.3); }
+    70% { transform: translate(-50%, -50%) scale(1.1); }
+    100% { transform: translate(-50%, -50%) scale(1); }
 }
 
 
