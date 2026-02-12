@@ -118,53 +118,73 @@ h1 {
     margin-top: 5vh;
 }
 
-.dialogue-box {
+/* 슬라이드 기본 */
+.slide {
     position: absolute;
-    bottom: 40px;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background: url("images/Starnight.png") center center / cover no-repeat;
+    text-align: center;
+}
+
+/* 캐릭터 이미지 */
+.slide img {
+    max-height: 75vh;
+    margin-top: 5vh;
+}
+
+/* 💬 대사 영역 (자동 높이) */
+.dialogue-wrapper {
+    position: absolute;
+    bottom: 80px;   /* 바닥에서 띄움 */
     left: 50%;
     transform: translateX(-50%);
-    width: 85%;
-    height: 220px;
-
-    background: linear-gradient(
-        135deg,
-        rgba(75, 0, 130, 0.95),
-        rgba(199, 21, 133, 0.9)
-    );
-
-    color: white;
-    padding: 35px 50px;
-    box-sizing: border-box;
-    border-radius: 20px;
-
-    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+    width: 70%;
+    text-align: center;
 }
 
+/* 🌟 이름표 */
 .name-tag {
-    position: absolute;
-    top: -45px;
-    left: 30px;
+    display: inline-block;
+    padding: 10px 28px;
+    margin-bottom: 15px;
 
-    background: linear-gradient(
-        90deg,
-        #ff6ec7,
-        #8a2be2
-    );
-
-    color: white;
-    padding: 8px 22px;
+    font-size: 22px;
     font-weight: bold;
-    font-size: 18px;
-    border-radius: 10px;
+    color: white;
 
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    background: linear-gradient(90deg, #ff6ec7, #8a2be2);
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
 }
 
+/* 💥 말풍선 (Poong.png 사용) */
+.speech-bubble {
+    position: relative;
+    display: inline-block;
+}
 
-.dialogue-text {
+.speech-bubble img {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* 말풍선 위 텍스트 */
+.bubble-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+    color: #4b0082;
     font-size: 24px;
+    font-weight: bold;
     line-height: 1.6;
+    text-align: center;
 }
+
 
 #particles {
     position: fixed;
@@ -174,22 +194,4 @@ h1 {
     height: 100vh;
     z-index: 1;
     pointer-events: none;
-}
-#bigBubble {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-
-    background: linear-gradient(135deg, #ff1493, #9400d3);
-    color: white;
-    padding: 50px 80px;
-    font-size: 40px;
-    font-weight: bold;
-
-    border-radius: 40px;
-    box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
-
-    z-index: 10000;
-    transition: 0.4s ease;
 }
