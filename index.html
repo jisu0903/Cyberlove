@@ -121,16 +121,21 @@
 
     if (currentSlide < slides.length) {
         showSlide(currentSlide);
+
     } else if (currentSlide === slides.length) {
-        document.getElementById("bigBubble").style.transform =
+        // 💥 Poong 등장
+        document.getElementById("bigPoong").style.transform =
             "translate(-50%, -50%) scale(1)";
+
     } else {
-        introContainer.style.display = "none";
-        document.getElementById("bigBubble").style.transform =
+        // 다시 닫기
+        document.getElementById("bigPoong").style.transform =
             "translate(-50%, -50%) scale(0)";
+        introContainer.style.display = "none";
         currentSlide = 0;
     }
 });
+
 
 // 파티클 효과
 const canvas = document.getElementById("particles");
