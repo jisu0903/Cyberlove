@@ -49,6 +49,9 @@
         </div>
       </div>
     </div>
+<div id="bigBubble">
+  이런 남자는 싫다구!!
+</div>
 
     <!-- Bobo -->
     <div class="slide">
@@ -104,14 +107,21 @@
 
     // 인트로 클릭하면 다음
     introContainer.addEventListener("click", () => {
-        currentSlide++;
-        if (currentSlide < slides.length) {
-            showSlide(currentSlide);
-        } else {
-            introContainer.style.display = "none";
-            currentSlide = 0;
-        }
-    });
+    currentSlide++;
+
+    if (currentSlide < slides.length) {
+        showSlide(currentSlide);
+    } else if (currentSlide === slides.length) {
+        document.getElementById("bigBubble").style.transform =
+            "translate(-50%, -50%) scale(1)";
+    } else {
+        introContainer.style.display = "none";
+        document.getElementById("bigBubble").style.transform =
+            "translate(-50%, -50%) scale(0)";
+        currentSlide = 0;
+    }
+});
+
 // 파티클 효과
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
