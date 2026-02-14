@@ -8,15 +8,25 @@ document.getElementById("newGameBtn").onclick = () => {
   intro.style.display = "block";
   showSlide(0);
   current = 0;
-  bgm.play();
+  bgm.play().catch(()=>{});
 };
 
 function showSlide(i){
   slides.forEach(s => s.style.display="none");
-  slides[i].style.display="block";
+
+  if(slides[i]){
+    slides[i].style.display="block";
+  }
 }
 
-intro.onclick = () => {
+intro.addEventListener("click", () => {
+  current++;
+  if(current < slides.length){
+    showSlide(current);
+  }else{
+    intro.style.display="none";
+  }
+});
   current++;
   if(current < slides.length){
     showSlide(current);
